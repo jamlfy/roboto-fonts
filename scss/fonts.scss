@@ -1,4 +1,6 @@
-$fonts: (
+@import "css3/font-face";
+$basic :"../fonts";
+$roboto: (
 	(
 		Roboto,
 		roboto,
@@ -41,22 +43,29 @@ $fonts: (
 	)
 );
 
-@each $font in $fonts {
+@mixin fonts($fonts){
+	@each $font in $fonts {
 
-	$font-name: nth($font,1);
-	$font-file-prefix: nth($font,2);
+		$font-name: nth($font,1);
+		$font-file-prefix: nth($font,2);
 
-	@each $variant in nth($font,3) {
-		$weight-name: nth($variant,1);
-		$weight: nth($variant,2);
-		$style: nth($variant,3);
+		@each $variant in nth($font,3) {
+			$weight-name: nth($variant,1);
+			$weight: nth($variant,2);
+			$style: nth($variant,3);
 
-		@include font-face(
-				#{$font-name},
-				font-files("../#{$font-name}/#{$font-file-prefix}-#{$weight-name}-webfont.woff","../#{$font-name}/#{$font-file-prefix}-#{$weight-name}-webfont.ttf"),
-				"../#{$font-name}/#{$font-file-prefix}-#{$weight-name}-webfont.eot",
-				#{$weight},
-				#{$style}
-		);
+			@include font-face(
+					#{$font-name},
+					font-files(
+						"#{$basic}/#{$font-name}/#{$font-file-prefix}-#{$weight-name}-webfont.woff",
+						"#{$basic}/#{$font-name}/#{$font-file-prefix}-#{$weight-name}-webfont.ttf"),
+					"#{$basic}/#{$font-name}/#{$font-file-prefix}-#{$weight-name}-webfont.eot",
+					#{$weight},
+					#{$style}
+			);
+		}
 	}
+
 }
+
+@include fonts($roboto);
