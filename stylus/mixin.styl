@@ -1,0 +1,33 @@
+// Example Useage:
+//
+// robotoBasePath = "/assets/fonts"
+// @import "./mixin.styl";
+//
+// roboto-font(
+//   name: Roboto,
+//   filePrefix: roboto,
+//   (thin 100 normal),
+//   (thin 300 normal)
+// )
+//
+
+robotoBasePath ?= "../fonts"
+
+roboto-font(name, filePrefix, variants...) {
+  for variant, i in variants {
+    weightName = variant[0]
+    weight = variant[1]
+    style = variant[2]
+
+    if weight {
+      @font-face {
+        font-family: name
+        font-style: style
+        font-weight: weight
+        src url(robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.woff")
+        src url(robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.ttf")
+        src url(robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.eot")
+      }
+    }
+  }
+}
