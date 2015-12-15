@@ -18,15 +18,16 @@ roboto-font(name, filePrefix, variants...) {
     weightName = variant[0]
     weight = variant[1]
     style = variant[2]
+    woffURL = robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.woff"
+    ttfURL = robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.ttf"
+    eotURL = robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.eot"
 
     if weight {
       @font-face {
         font-family: name
         font-style: style
         font-weight: weight
-        src url(robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.woff")
-        src url(robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.ttf")
-        src url(robotoBasePath + "/" + name + "/" + filePrefix + "-" + weightName + "-webfont.eot")
+        src url(woffURL), url(ttfURL), url(eotURL)
       }
     }
   }
