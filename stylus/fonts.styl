@@ -1,0 +1,44 @@
+@import "./mixin.styl"
+
+// Note: This file imports all Roboto Font variants - that's a lot of fonts to
+// download!
+//
+// For optimal performance you should use the mixin.styl in this same folder and
+// include only the fonts that you need.
+
+roboto-font(
+  name: Roboto,
+  filePrefix: roboto,
+  (thin 100 normal),
+  (thinitalic 100 italic),
+  (light 300 normal),
+  (lightitalic 300 italic),
+  (regular 400 normal),
+  (italic 400 italic),
+  (medium 500 normal),
+  (mediumitalic 500 italic),
+  (bold 700 normal),
+  (bolditalic 700 italic),
+  (black 900 normal),
+  (blackitalic 900 italic)
+)
+
+roboto-font(
+  name: Roboto_condensed,
+  filePrefix: robotocondensed,
+  (light 300 normal),
+  (lightitalic 300 italic),
+  (regular 400 normal),
+  (italic 400 italic),
+  (bold 700 normal),
+  (bolditalic 700 italic)
+)
+
+roboto-font(
+  name: Roboto_slab,
+  filePrefix: robotoslab,
+  (thin 100 normal),
+  (light 300 normal),
+  (regular 400 normal),
+  (bold 700 normal)
+)
